@@ -1,5 +1,10 @@
 package com.tiany.leetcode.Solution;
 
+import java.util.Arrays;
+
+import com.tiany.leetcode.dataStructs.ListNode;
+import com.tiany.leetcode.dataStructs.TreeNode;
+
 public class Solution {
     public Solution() {
     }
@@ -75,4 +80,82 @@ public class Solution {
     public String replaceSpace(String s) {
         return s.replace(" ", "%20");
     }
+
+    /**
+     * 输入一个链表的头节点，从尾到头反过来返回每个节点的值（用数组返回）。
+     * 
+     * @param head
+     * @return
+     */
+    public int[] reversePrint(ListNode head) {
+
+        ListNode p = head;
+        int count = 0;
+        while (head != null) {
+            count++;
+            head = head.getNext();
+        }
+        int[] a = new int[count];
+        count--;
+        // System.out.println(count);
+        while (p != null) {
+            a[count] = p.getVal();
+            count--;
+            p = p.getNext();
+
+        }
+
+        return a;
+    }
+
+    /**
+     * 输入某二叉树的前序遍历和中序遍历的结果，请构建该二叉树并返回其根节点。
+     * 
+     * 假设输入的前序遍历和中序遍历的结果中都不含重复的数字。
+     * 
+     * @param preorder
+     * @param inorder
+     * @return
+     */
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        if (preorder.length == 0) {
+            return null;
+        }
+
+        // 1、根据前序，找到根的值，并且创建根节点
+        int rootValue = preorder[0];
+        TreeNode root = new TreeNode(rootValue);
+
+        // 2、在中序中找到根的值所在的下标
+        int leftSize = find(inorder, rootValue);
+
+        // 3、切出左子树的前序和中序
+        int[] leftPreorder = Arrays.copyOfRange(preorder, 1, 1 + leftSize);
+        int[] leftInorder = Arrays.copyOfRange(inorder, 0, leftSize);
+        root.setLeft(buildTree(leftPreorder, leftInorder));
+
+        // 4、切出右子树的前序和中序
+        int[] rightPreorder = Arrays.copyOfRange(preorder, 1 + leftSize, preorder.length);
+        int[] rightInorder = Arrays.copyOfRange(inorder, leftSize + 1, preorder.length);
+        root.setRight(buildTree(rightPreorder, rightInorder));
+
+        return root;
+    }
+
+    /**
+     * 在中序中找到根的值所在的下标
+     * 
+     * @param array
+     * @param v
+     * @return
+     */
+    private static int find(int[] array, int v) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == v) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
 }

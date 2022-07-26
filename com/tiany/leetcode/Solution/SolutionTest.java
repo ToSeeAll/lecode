@@ -1,6 +1,10 @@
 package com.tiany.leetcode.Solution;
 
 import org.junit.Test;
+
+import com.tiany.leetcode.dataStructs.ListNode;
+import com.tiany.leetcode.dataStructs.TreeNode;
+
 import java.io.IOException;
 
 public class SolutionTest {
@@ -34,5 +38,29 @@ public class SolutionTest {
     @Test
     public void testFindNumberIn2DArray1() {
         System.out.println("aaa");
+    }
+
+    @Test
+    public void testReversePrint() {
+        ListNode listNode = new ListNode();
+        ListNode listNode2 = new ListNode();
+        // ListNode listNode3 = new ListNode();
+        int[] nums = { 2, 3, 1, 0, 2, 5, 3 };
+        listNode2 = listNode.createListNode(nums);
+        Solution solution = new Solution();
+        for (int i : solution.reversePrint(listNode2)) {
+            System.out.println(i);// 最后一位是头指针的值，应舍去
+        }
+
+    }
+
+    @Test
+    public void testBuildTree() {
+        Solution solution = new Solution();
+        int[] a = { 3, 9, 20, 15, 7 };
+        int[] b = { 9, 3, 15, 20, 7 };
+        TreeNode root = new TreeNode();
+        root = solution.buildTree(a, b);
+        System.out.println(root);
     }
 }

@@ -1,5 +1,8 @@
 package com.tiany.leetcode.dataStructs;
 
+/**
+ * 单向链表
+ */
 public class ListNode {
     private int val;
     private ListNode next;
@@ -20,11 +23,11 @@ public class ListNode {
         this.next = next;
     }
 
-    ListNode(int x) {
+    public ListNode(int x) {
         val = x;
     }
 
-    ListNode() {
+    public ListNode() {
     }
 
     /**
@@ -63,6 +66,9 @@ public class ListNode {
         return hNode;
     }
 
+    /**
+     * 打印当前链表
+     */
     public void printListNode() {
         ListNode pNode;
         pNode = this;
