@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import com.tiany.leetcode.dataStructs.ListNode;
 import com.tiany.leetcode.dataStructs.TreeNode;
+import com.tiany.leetcode.dataStructs.MinStack;
 
 import java.io.IOException;
 
@@ -62,5 +63,25 @@ public class SolutionTest {
         TreeNode root = new TreeNode();
         root = solution.buildTree(a, b);
         System.out.println(root);
+    }
+
+    @Test
+    public void testFib() {
+        Solution solution = new Solution();
+        int a = 6;
+        System.out.println(solution.fib(a));
+
+    }
+
+    @Test
+    public void testMinSack() {
+        MinStack minStack = new MinStack();
+        minStack.push(-2);
+        minStack.push(0);
+        minStack.push(-3);
+        System.out.println(minStack.min());
+        minStack.pop();
+        System.out.println(minStack.top());
+        System.out.println(minStack.min());
     }
 }
