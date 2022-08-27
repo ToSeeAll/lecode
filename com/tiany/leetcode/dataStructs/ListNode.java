@@ -73,7 +73,7 @@ public class ListNode {
         ListNode pNode;
         pNode = this;
         try {
-            while (pNode != null) {
+            while (pNode.getNext() != null) {
                 pNode = pNode.getNext();
                 System.out.println(pNode.getVal());
 
@@ -83,6 +83,7 @@ public class ListNode {
         }
 
     }
+    //todo 很奇怪，丢失第一个数据
 
     // /**
     // * 通过数组给链表赋值
