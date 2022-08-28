@@ -96,4 +96,12 @@ public class SolutionTest {
         listNode3 = solution.reverseList(listNode2);
         listNode3.printListNode();
     }
+
+    @Test
+    public void reverseLeftWords() {
+        Solution solution = new Solution();
+        String s = "adbsncs";
+        int n = 2;
+        System.out.println(solution.reverseLeftWords(s, n));
+    }
 }
